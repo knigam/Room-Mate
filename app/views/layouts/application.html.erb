@@ -11,28 +11,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container">
-        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </a>
-        <a class="brand" href="/">Room Mate</a>
-        <div class="nav-collapse">
-          <ul class="nav">
-            <li><%= link_to "Example Link" %></li>
-          </ul>
-        </div>
-      </div>
+<div id="wrapper">
+  <!-- Sidebar -->
+  <div id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+          <li class="sidebar-brand">
+              <a href="#">
+                  Start Bootstrap
+              </a>
+          </li>
+          <li>
+              <a href="#">Dashboard</a>
+          </li>
+          <li>
+              <a href="#">Shortcuts</a>
+          </li>
+          <li>
+              <a href="#">Overview</a>
+          </li>
+          <li>
+              <a href="#">Events</a>
+          </li>
+          <li>
+              <a href="#">About</a>
+          </li>
+          <li>
+              <a href="#">Services</a>
+          </li>
+          <li>
+              <a href="#">Contact</a>
+          </li>
+      </ul>
+  </div>
+  <div id="page-content-wrapper"> 
+    <div class="container">
+    	<div class="row">
+    		<div class="span12"><%= yield %></div>
+    	</div>
     </div>
   </div>
-<div class="container">
-	<div class="row">
-		<div class="span12"><%= yield %></div>
-	</div>
 </div>
-
 </body>
 </html>
