@@ -41,5 +41,5 @@ end
 # gem 'debugger', group: [:development, :test]
 gem 'therubyracer'
 gem 'less-rails'
-gem 'twitter-bootstrap-rails'
+gem 'twitter-bootstrap-rails', '~> 2.2.8'
 gem 'devise'
