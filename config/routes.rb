@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :tasks
+
+  get 'welcome/index'
+
+  resources :items
+
   resources :groups
 
   devise_for :users

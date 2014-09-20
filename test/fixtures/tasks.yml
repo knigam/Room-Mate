@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  due: 2014-09-20 06:10:59
+  priority: 1
+  last_user: 1
+
+two:
+  name: MyString
+  due: 2014-09-20 06:10:59
+  priority: 1
+  last_user: 1
