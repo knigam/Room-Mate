@@ -10,10 +10,6 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :items
   has_and_belongs_to_many :tasks
 
-  def notify_new_user(email)
-    email_new_user(email)
-  end
-
   def notify(text)
   	if self.email_notifications
   		send_email(text)
@@ -54,26 +50,5 @@ class User < ActiveRecord::Base
 	 :from_email=>"roommate@noreply.com"  
 	}  
 	sending = m.messages.send message  
-  end
-
-  private
-  def email_new_user(email)
-  	m = Mandrill::API.new '1bIbtiJDlLgJjqw4YuPegw'
-  	body = "Your roommate invited you to join Room Mate"
-	message = {  
-	 :subject=> body,  
-	 :from_name=> "Room Mate",  
-	 :text=>body + " too bad we're exclusive. :(",  
-	 :to=>[  
-	   {  
-	     :email=> email,  
-	     :name=> "Friend"  
-	   }  
-	 ],  
-	 :html=>"<html> #{body} </html>",  
-	 :from_email=>"roommate@noreply.com"  
-	}  
-	sending = m.messages.send message  
-	puts sending
   end
 end
