@@ -19,3 +19,14 @@ body{
 .form_actions{
 	background-color:#CC6600;
 }
+.float-center {
+  float: right;
+
+  position: relative;
+  left: -5%; /* or right 50% */
+  text-align: left;
+}
+.float-center > .child {
+  position: relative;
+  left: 5%;
+}
