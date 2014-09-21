@@ -38,7 +38,19 @@ class ItemsController < ApplicationController
       end
     end
   end
-
+ 
+  # POST /items/toggle_stocked
+  # POST /items/toggle_stocked.json
+  def toggle_stocked
+    @item.stocked = !@item.stocked
+    respond_to do |format|
+      if @item.save 
+        format.html {redirect_to @item.group, notice: 'Item stocked toggled.' }
+      else
+        format.html {redirect_to @item.group, notice: 'Item stocked not toggled.' }
+      end
+    end
+  end
   # PATCH/PUT /items/1
   # PATCH/PUT /items/1.json
   def update
