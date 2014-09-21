@@ -13,7 +13,7 @@
 
 <div class="row">
   <div class="span5">
-	<table class="table table-striped">
+	<table class="table">
 	  <thead>
 	    <tr>
 	      <th><%= model_class.human_attribute_name(:name) %></th>
@@ -47,7 +47,7 @@
 		    :class => 'btn btn-primary' %>
   </div>
   <div class="span5">
-	<table class="table table-striped">
+	<table class="table">
 	  <thead>
 	    <tr>
 	      <th><%= model_class.human_attribute_name(:name) %></th>
@@ -87,7 +87,7 @@
     <% end %>
   </div>
 </div>
-<div class="form-actions">
+<div class="form-actions" style="background-color: transparent;">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               groups_path, :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),

@@ -16,7 +16,7 @@
   <dd><%= @task.group_id %></dd>
 </dl>
 
-<div class="form-actions">
+<div class="form-actions" style="background-color: transparent;">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               group_path(@task.group), :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),

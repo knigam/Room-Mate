@@ -20,7 +20,7 @@
 
   <%= f.hidden_field :group_id, :value => @item.group.id %>
 
-  <div class="form-actions">
+  <div class="form-actions" style="background-color: transparent;">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 items_path, :class => 'btn' %>
