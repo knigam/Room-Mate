@@ -15,6 +15,7 @@ class ItemsController < ApplicationController
   # GET /items/new
   def new
     @item = Item.new
+    @item.group = current_user.groups.find(params[:group])
   end
 
   # GET /items/1/edit
@@ -69,6 +70,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :number, :priority, :last_user)
+      params.require(:item).permit(:name, :number, :priority, :last_user, :group)
     end
 end

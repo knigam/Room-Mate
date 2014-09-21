@@ -15,6 +15,7 @@ class TasksController < ApplicationController
   # GET /tasks/new
   def new
     @task = Task.new
+    @task.group = current_user.groups.find(params[:group])
   end
 
   # GET /tasks/1/edit
@@ -25,6 +26,7 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = Task.new(task_params)
+    @task.group = current_user.groups.find(params[:task][:group_id])
 
     respond_to do |format|
       if @task.save

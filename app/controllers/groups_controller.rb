@@ -4,12 +4,15 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.all
+    @groups = current_user.groups
   end
 
   # GET /groups/1
   # GET /groups/1.json
   def show
+    if !current_user.groups.exists?(@group)
+      redirect_to :action => "index"
+    end
   end
 
   # GET /groups/new
