@@ -9,9 +9,10 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :items
   has_and_belongs_to_many :tasks
 
-  def notify_new_user(email){
-  	email_new_user(email)
-  }
+  def notify_new_user(email)
+    email_new_user(email)
+  end
+
   def notify(task)
   	if self.email_notifications
   		send_email(task)

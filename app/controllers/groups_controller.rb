@@ -55,7 +55,7 @@ class GroupsController < ApplicationController
     if @user
       @user.groups << @group
     else
-      @user.email_new_user(params[:email])
+      @user.notify_new_user(params[:email])
     end
 
     respond_to do |format|
