@@ -7,9 +7,8 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:due) %></th>
+      <th><%= model_class.human_attribute_name(:num_users) %></th>
       <th><%= model_class.human_attribute_name(:priority) %></th>
-      <th><%= model_class.human_attribute_name(:last_user) %></th>
       <th><%= model_class.human_attribute_name(:group_id) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -20,9 +19,8 @@
       <tr>
         <td><%= link_to task.id, task_path(task) %></td>
         <td><%= task.name %></td>
-        <td><%= task.due %></td>
+        <td><%= task.num_users %></td>
         <td><%= task.priority %></td>
-        <td><%= task.last_user %></td>
         <td><%= task.group_id %></td>
         <td><%=l task.created_at %></td>
         <td>

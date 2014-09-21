@@ -6,12 +6,10 @@
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @task.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:due) %>:</strong></dt>
-  <dd><%= @task.due %></dd>
   <dt><strong><%= model_class.human_attribute_name(:priority) %>:</strong></dt>
   <dd><%= @task.priority %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:last_user) %>:</strong></dt>
-  <dd><%= @task.last_user %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:num_users) %>:</strong></dt>
+  <dd><%= @task.num_users %></dd>
   <dt><strong><%= model_class.human_attribute_name(:group_id) %>:</strong></dt>
   <dd><%= @task.group_id %></dd>
 </dl>

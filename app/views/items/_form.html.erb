@@ -17,6 +17,13 @@
       <%= f.text_field :priority, :class => 'text_field' %>
     </div>
   </div>
+  <div class="control-group">
+    <%= f.label :stocked, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :stocked, :class => 'check_box' %>
+    </div>
+  </div>
+
 
   <%= f.hidden_field :group_id, :value => @item.group.id %>
 
