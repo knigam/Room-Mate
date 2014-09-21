@@ -52,6 +52,7 @@ class ItemsController < ApplicationController
       end
     end
   end
+
   # PATCH/PUT /items/1
   # PATCH/PUT /items/1.json
   def update

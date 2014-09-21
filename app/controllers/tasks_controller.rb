@@ -27,9 +27,47 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.group = current_user.groups.find(params[:task][:group_id])
-
+    user_index = rand(@task.group.users.count)
+    #for i in 0...@task.num_users
+    (0... @task.num_users).each do |i|
+      if user_index >= @task.group.users.count
+        user_index = 0
+      end
+      @task.users << @task.group.users[user_index]
+      user_index += 1
+    end
     respond_to do |format|
       if @task.save
+        format.html { redirect_to @task, notice: 'Task was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @task }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # POST /tasks/complete
+  # POST /items/complete.json
+  def complete
+    @task = Task.find(params[:id])
+    last_user = @task.group.users.index(@task.users.last)
+    
+    @task.users.each do |u|
+      last_user += 1
+      if last_user >= @task.group.users.count
+        last_user = 0
+      end
+      @task.users.delete(u)
+      @task.users << @task.group.users[last_user]
+    end
+    
+    @task.users.each do |u|
+      u.notify(@task)      
+    end
+
+    respond_to do |format|
+      if @task.save 
         format.html { redirect_to @task, notice: 'Task was successfully created.' }
         format.json { render action: 'show', status: :created, location: @task }
       else

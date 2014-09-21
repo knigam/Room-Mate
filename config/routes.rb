@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post 'groups/add_user' => 'groups#add_user', as: :group_add_user
 
   resources :tasks
+  post '/tasks/complete' => 'tasks#complete', as: :tasks_complete
 
   get 'welcome/index'
 
