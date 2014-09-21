@@ -9,10 +9,16 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript">
+  var button = $('#brand');
+
+  button.addEventListener('click', function() {
+    $('#sidebar-wrapper').toggle();
+}, false);
+</script>
 </head>
 <body>
 <div id="wrapper">
-  <!-- Sidebar -->
   <div id="sidebar-wrapper">
       <ul class="sidebar-nav">
           <li class="sidebar-brand">
@@ -20,30 +26,31 @@
                   Start Bootstrap
               </a>
           </li>
-          <li>
-              <a href="#">Dashboard</a>
-          </li>
-          <li>
-              <a href="#">Shortcuts</a>
-          </li>
-          <li>
-              <a href="#">Overview</a>
-          </li>
-          <li>
-              <a href="#">Events</a>
-          </li>
-          <li>
-              <a href="#">About</a>
-          </li>
-          <li>
-              <a href="#">Services</a>
-          </li>
-          <li>
-              <a href="#">Contact</a>
-          </li>
+          <% if user_signed_in? %>
+            <%  current_user.groups.each do |group| %>
+              <li>
+                <a href="#"> <%= group.name %></a>
+              </li>
+            <% end %>
+          <% end %>
       </ul>
   </div>
-  <div id="page-content-wrapper"> 
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+       <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand">Room Mate</a >
+        <div class="nav-collapse">
+         <ul class="nav">
+           <li><%= link_to "Example Link" %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
     <div class="container">
     	<div class="row">
     		<div class="span12"><%= yield %></div>
