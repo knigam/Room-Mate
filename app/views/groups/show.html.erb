@@ -14,6 +14,9 @@
       <dd><h3> Items out of stock</h3></dd>
     </dl>
   </div>
+  <div class="span2">
+      <h3>Users</h3>
+  </div>
 </div>
 
 <div class="row">
@@ -94,9 +97,9 @@
 	</table>
   </div>
   <div class="span2">
-    <p>Users</p>
     <% @group.users.each do |u| %>
-      <p><%= u.first_name %></p>
+      <h5><%= u.first_name %></h5>
+      <br/>
     <% end %>
   </div>
 </div>
