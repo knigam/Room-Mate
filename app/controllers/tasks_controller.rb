@@ -63,7 +63,7 @@ class TasksController < ApplicationController
     end
     
     @task.users.each do |u|
-      u.notify(@task)      
+      u.notify("The task " + @task.name + " has been assigned to you.")      
     end
 
     respond_to do |format|

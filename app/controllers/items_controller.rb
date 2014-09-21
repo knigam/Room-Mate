@@ -46,6 +46,11 @@ class ItemsController < ApplicationController
     @item.stocked = !@item.stocked
     respond_to do |format|
       if @item.save 
+	if !@item.stocked
+	  @item.group.users.each do |u|
+	    u.notify(@item.name + " is out of stock.")
+	  end
+	end
         format.html {redirect_to @item.group, notice: 'Item stocked toggled.' }
       else
         format.html {redirect_to @item.group, notice: 'Item stocked not toggled.' }

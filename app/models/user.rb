@@ -14,36 +14,36 @@ class User < ActiveRecord::Base
     email_new_user(email)
   end
 
-  def notify(task)
+  def notify(text)
   	if self.email_notifications
-  		send_email(task)
+  		send_email(text)
   	end
   	if self.text_notifications
-  		send_sms(task)
+  		send_sms(text)
   	end
   end
 
   private
-  def send_sms(task)
+  def send_sms(text)
   	account_sid = 'ACd9c82ecb10bf6bfc3a4572aed443f882'
 	auth_token = 'b2038599737574dd64f3efbbb4187679'
 	@client = Twilio::REST::Client.new account_sid, auth_token
  
 	message = @client.account.messages.create(
-		:body => "It is your turn for " + task.name,
+		:body => text,
     	:to => self.phone_no,
     	:from => "+16784363595",
     )
   end
 
   private
-  def send_email(task)
+  def send_email(text)
   	m = Mandrill::API.new '1bIbtiJDlLgJjqw4YuPegw'
-  	body = "It\'s your turn Room Mate!"
+  	body = "Notification from Room Mate!"
 	message = {  
 	 :subject=> body,  
 	 :from_name=> "Room Mate",  
-	 :text=>"It is your turn for " + task.name,  
+	 :text=> text,  
 	 :to=>[  
 	   {  
 	     :email=> self.email,  
