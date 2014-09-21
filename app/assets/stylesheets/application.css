@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+body{
+	background: url('/assets/background06-2ec3.jpg');
+}
+.form_actions{
+	background-color:#CC6600;
+}

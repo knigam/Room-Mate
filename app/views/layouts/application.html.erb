@@ -22,12 +22,15 @@
         <a class="brand">Room Mate</a >
         <div class="nav-collapse">
          <ul class="nav">
-              <% if user_signed_in? %>
+            <% if user_signed_in? %>
             <%  current_user.groups.each do |group| %>
               <li><%= link_to group.name, group_path(group) %></li>
             <% end %>
           <% end %>
           </ul>
+          <ul class="nav navbar-nav navbar-right pull-right">
+          <% if user_signed_in? %> <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li> <% end %>
+        </ul>
         </div>
       </div>
     </div>
