@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'twilio-ruby'
 
-gem 'mandrill'
+gem 'mandrill-api'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

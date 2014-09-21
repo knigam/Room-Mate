@@ -1,3 +1,4 @@
+require 'mandrill' 
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -16,7 +17,7 @@ class User < ActiveRecord::Base
   		send_email(task)
   	end
   	if self.text_notifications
-  		send_sms(task)
+  #		send_sms(task)
   	end
   end
 
@@ -27,12 +28,10 @@ class User < ActiveRecord::Base
 	@client = Twilio::REST::Client.new account_sid, auth_token
  
 	message = @client.account.messages.create(
-		:body => "It is your turn for" + task,
+		:body => "It is your turn for" + task.name,
     	:to => self.phone_no,
     	:from => "+16784363595",
     )
-	puts message.to
-
   end
 
   private
@@ -42,7 +41,7 @@ class User < ActiveRecord::Base
 	message = {  
 	 :subject=> body,  
 	 :from_name=> "Room Mate",  
-	 :text=>"It is your turn for " + task,  
+	 :text=>"It is your turn for " + task.name,  
 	 :to=>[  
 	   {  
 	     :email=> self.email,  
@@ -53,8 +52,6 @@ class User < ActiveRecord::Base
 	 :from_email=>"roommate@noreply.com"  
 	}  
 	sending = m.messages.send message  
-	puts sending
-
   end
 
   private
