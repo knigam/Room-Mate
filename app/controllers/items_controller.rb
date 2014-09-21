@@ -42,6 +42,7 @@ class ItemsController < ApplicationController
   # POST /items/toggle_stocked
   # POST /items/toggle_stocked.json
   def toggle_stocked
+    @item = Item.find(params[:id])
     @item.stocked = !@item.stocked
     respond_to do |format|
       if @item.save 
