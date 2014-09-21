@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   resources :groups
+  get 'groups/:id/new_user' => 'groups#new_user', as: :group_new_user
+  post 'groups/add_user' => 'groups#add_user', as: :group_add_user
 
   resources :tasks
 
