@@ -17,12 +17,8 @@
       <%= f.text_field :priority, :class => 'text_field' %>
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label :last_user, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :last_user, :class => 'text_field' %>
-    </div>
-  </div>
+
+  <%= f.hidden_field :group_id, :value => @item.group.id %>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
