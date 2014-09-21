@@ -36,15 +36,10 @@
 		<td><%= item.priority %></td>
 		<td><%= item.stocked %></td>
 		<td>
-   		  <% if item.stocked %>
-		    <%= link_to t(".we\'re_out", :default => t("helpers.links.we\'re_out")),
-		  	      items_toggle_stocked_url,
-		      	      :class => 'btn btn-primary' %>
- 		  <% else %>
-		    <%= link_to t(".we\'re_stocked", :default => t("helpers.links.we\'re_stocked")),
-		  	      items_toggle_stocked_url,
-		      	      :class => 'btn btn-primary' %>
-  		  <% end %>
+		  <%= link_to t(".we\'re_out", :default => t("helpers.links.we\'re_out")),
+		  	      items_toggle_stocked_url(:id => item.id),
+ 	  		      :method => :post,
+		      	      :class => 'btn btn-mini btn-primary' %>
 		  <%= link_to t('.edit', :default => t("helpers.links.edit")),
 			      edit_item_path(item), :class => 'btn btn-mini' %>
 		  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
@@ -81,6 +76,10 @@
 		<td><%= item.priority %></td>
 		<td><%= item.stocked %></td>
 		<td>
+		    <%= link_to t(".we\'re_stocked", :default => t("helpers.links.we\'re_stocked")),
+		  	      items_toggle_stocked_url(:id => item.id),
+ 	  		      :method => :post,
+		      	      :class => 'btn btn-mini btn-primary' %>
 		  <%= link_to t('.edit', :default => t("helpers.links.edit")),
 			      edit_item_path(item), :class => 'btn btn-mini' %>
 		  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
