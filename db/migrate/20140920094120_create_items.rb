@@ -4,7 +4,7 @@ class CreateItems < ActiveRecord::Migration
       t.string :name
       t.integer :number
       t.integer :priority
-      t.integer :last_user
+      t.boolean :stocked
       t.belongs_to :group
 
       t.timestamps

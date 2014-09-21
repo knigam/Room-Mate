@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20140920115725) do
     t.string   "name"
     t.integer  "number"
     t.integer  "priority"
-    t.integer  "last_user"
+    t.boolean  "stocked"
     t.integer  "group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -45,9 +45,8 @@ ActiveRecord::Schema.define(version: 20140920115725) do
 
   create_table "tasks", force: true do |t|
     t.string   "name"
-    t.datetime "due"
     t.integer  "priority"
-    t.integer  "last_user"
+    t.integer  "num_users"
     t.integer  "group_id"
     t.datetime "created_at"
     t.datetime "updated_at"

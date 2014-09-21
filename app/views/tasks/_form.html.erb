@@ -23,6 +23,6 @@
   <div class="form-actions" style="background-color: transparent;">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                tasks_path, :class => 'btn' %>
+                group_path(@task.group), :class => 'btn' %>
   </div>
 <% end %>
