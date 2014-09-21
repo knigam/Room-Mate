@@ -41,6 +41,32 @@ class GroupsController < ApplicationController
     end
   end
 
+  # GET /groups/1/new_user
+  # GET /groups/1/new_user.json
+  def new_user
+    @group = current_user.groups.find(params[:id])
+  end
+
+  # POST /groups/add_user
+  # POST /groups/add_user.json
+  def add_user
+    @group = current_user.groups.find(params[:group_id])
+    @user = User.find_by_email(params[:email])
+    if @user
+      @user.groups << @group
+    end
+
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to @group, notice: 'User was successfully added.' }
+        format.json { render action: 'show', status: :created, location: @group }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @group.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # PATCH/PUT /groups/1
   # PATCH/PUT /groups/1.json
   def update
