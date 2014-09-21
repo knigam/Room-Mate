@@ -11,6 +11,6 @@
   <div class="form-actions" style="background-color: transparent;">
     <%= submit_tag nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                group_add_user_url, :class => 'btn' %>
+                group_path(@group), :class => 'btn' %>
   </div>
 <% end %>
