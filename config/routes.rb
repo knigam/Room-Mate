@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   resources :items
+  post 'items/toggle_stocked' => 'items#toggle_stocked', as: :items_toggle_stocked
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
