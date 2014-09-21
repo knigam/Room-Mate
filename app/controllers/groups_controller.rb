@@ -84,7 +84,11 @@ class GroupsController < ApplicationController
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
-    @group.destroy
+    current_user.groups.delete(@group)
+    current_user.save
+    if @group.users.count == 0
+      @group.destroy
+    end
     respond_to do |format|
       format.html { redirect_to groups_url }
       format.json { head :no_content }
