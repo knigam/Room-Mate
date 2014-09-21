@@ -1,3 +1,4 @@
+require 'twilio-ruby'
 require 'mandrill' 
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
@@ -14,18 +15,18 @@ class User < ActiveRecord::Base
   		send_email(task)
   	end
   	if self.text_notifications
-  #		send_sms(task)
+  		send_sms(task)
   	end
   end
 
   private
   def send_sms(task)
   	account_sid = 'ACd9c82ecb10bf6bfc3a4572aed443f882'
-	auth_token = '{{ b2038599737574dd64f3efbbb4187679 }}'
+	auth_token = 'b2038599737574dd64f3efbbb4187679'
 	@client = Twilio::REST::Client.new account_sid, auth_token
  
 	message = @client.account.messages.create(
-		:body => "It is your turn for" + task.name,
+		:body => "It is your turn for " + task.name,
     	:to => self.phone_no,
     	:from => "+16784363595",
     )
