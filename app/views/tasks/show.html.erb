@@ -8,10 +8,10 @@
   <dd><%= @task.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:priority) %>:</strong></dt>
   <dd><%= @task.priority %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:num_users) %>:</strong></dt>
-  <dd><%= @task.num_users %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:group_id) %>:</strong></dt>
-  <dd><%= @task.group_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:users) %>:</strong></dt>
+  <% @task.users.each do |user| %>
+    <dd><%= user.first_name %></dd>
+  <% end %>
 </dl>
 
 <div class="form-actions" style="background-color: transparent;">

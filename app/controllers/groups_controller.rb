@@ -54,6 +54,8 @@ class GroupsController < ApplicationController
     @user = User.find_by_email(params[:email])
     if @user
       @user.groups << @group
+    else
+      @user.email_new_user(params[:email])
     end
 
     respond_to do |format|
